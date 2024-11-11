@@ -40,6 +40,8 @@ import { XMarkIcon } from "@heroicons/vue/24/outline";
 .weather_stats_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .stat_container {
@@ -47,7 +49,6 @@ import { XMarkIcon } from "@heroicons/vue/24/outline";
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
 }
 .description {
   display: flex;

@@ -1,19 +1,16 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="">
-    <div class="tabs">
-        <button class="tab_btn">Hourly Forecast</button>
-        <button class="tab_btn">7-Day Forecast</button>
-    </div>
-    <div class="forecast">
-        
+  <div class="container">
+    <div class="btn_group">
+      <button class="btn" :class="{ btn_active: true }">Hourly Forecast</button>
+      <button class="btn" :class="{ btn_active: false }">7-Day Forecast</button>
     </div>
   </div>
 </template>
 
 <style scoped>
-
+.container {
+  margin-top: 1rem;
+}
 </style>
