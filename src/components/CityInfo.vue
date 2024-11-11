@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
+import SettingsPopup from "./SettingsPopup.vue";
 </script>
 
 <template>
@@ -12,9 +12,7 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
       </div>
     </div>
 
-    <button class="btn">
-      <Cog6ToothIcon class="icon" />
-    </button>
+    <SettingsPopup />
   </div>
 </template>
 
@@ -33,21 +31,6 @@ import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
 }
 
 .date_time_info {
-  color: var(--muted-foreground);
-}
-
-.btn {
-  background-color: var(--background);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.icon {
-  color: var(--muted-foreground);
-  width: 1rem;
-  height: 1rem;
+  color: var(--secondary-text);
 }
 </style>

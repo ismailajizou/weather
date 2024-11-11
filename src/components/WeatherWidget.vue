@@ -11,6 +11,7 @@ import WeatherStats from "./WeatherStats.vue";
     <WeatherOverview />
     <WeatherStats />
     <AQIProgress />
+    <ForecastTabs />
   </div>
 </template>
 
@@ -18,9 +19,9 @@ import WeatherStats from "./WeatherStats.vue";
 .widget {
   max-width: 40rem;
   width: 100%;
-  background-color: var(--background-secondary);
+  background-color: var(--primary-background);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 25px;
   margin: 0 auto;
   padding: 1.5rem 1.75rem;
 }

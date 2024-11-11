@@ -29,14 +29,14 @@ import { CloudIcon } from "@heroicons/vue/24/outline";
   gap: 1rem;
 }
 .icon {
-  color: var(--muted-foreground);
+  color: var(--secondary-text);
   width: 4.5rem;
   height: 4.5rem;
 }
 .temp_value {
   font-size: 3.5rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 .weather_description {
@@ -46,10 +46,10 @@ import { CloudIcon } from "@heroicons/vue/24/outline";
 .description {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 .feels_like {
-  color: var(--muted-foreground);
+  color: var(--secondary-text);
 }
 </style>

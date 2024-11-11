@@ -60,7 +60,7 @@ import { InformationCircleIcon } from "@heroicons/vue/24/solid";
   top: 100%;
   right: 1rem;
   border: 0.5rem solid transparent;
-  border-top-color: var(--background);
+  border-top-color: var(--secondary-background);
 }
 
 .popover_container:hover .popover {
@@ -68,28 +68,28 @@ import { InformationCircleIcon } from "@heroicons/vue/24/solid";
 }
 
 .icon {
-  color: var(--muted-foreground);
+  color: var(--disabled);
   width: 1rem;
   height: 1rem;
 }
 
 .progress {
   margin-top: 1rem;
-  background-color: var(--background);
+  background-color: var(--disabled);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 3rem;
   overflow: hidden;
 }
 
 .progress-bar {
   width: 100%;
   height: 0.3rem;
-  background-color: var(--border);
+  background-color: var(--disabled);
 }
 
 .progress-bar-fill {
   height: 100%;
-  background-color: #fb3748;
+  background-color: var(--progress-fill);
   border-radius: 0 3rem 3rem 0;
 }
 </style>

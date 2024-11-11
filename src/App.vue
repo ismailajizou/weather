@@ -15,6 +15,15 @@ import WeatherWidget from "./components/WeatherWidget.vue";
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: var(--background-primary);
+  background: linear-gradient(
+      0deg,
+      var(--secondary-text, #0e121b),
+      var(--secondary-text, #0e121b)
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.16) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
 }
 </style>
