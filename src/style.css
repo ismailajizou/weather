@@ -1,0 +1,59 @@
+* {
+  /* reset browser CSS*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #08080a;
+  --card: #ffffff;
+  --card-foreground: #08080a;
+  --popover: #ffffff;
+  --popover-foreground: #08080a;
+  --primary: #17171b;
+  --primary-foreground: #f9f9f9;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #17171b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #17171b;
+  --destructive: #ee4444;
+  --destructive-foreground: #f9f9f9;
+  --border: #e4e4e7;
+  --input: #e3e3e7;
+  --ring: #17171b;
+  --radius: 0.3rem;
+}
+
+.dark {
+  --background: #08080a;
+  --foreground: #f9f9f9;
+  --card: #08080a;
+  --card-foreground: #f9f9f9;
+  --popover: #08080a;
+  --popover-foreground: #f9f9f9;
+  --primary: #f9f9f9;
+  --primary-foreground: #17171b;
+  --secondary: #27272a;
+  --secondary-foreground: #f9f9f9;
+  --muted: #27272a;
+  --muted-foreground: #a1a1a9;
+  --accent: #27272a;
+  --accent-foreground: #f9f9f9;
+  --destructive: #7f1d1d;
+  --destructive-foreground: #f9f9f9;
+  --border: #27272a;
+  --input: #27272a;
+  --ring: #d3d3d7;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: auto;
+  src: url("/fonts/inter/Inter-VariableFont.ttf") format("truetype");
+}
