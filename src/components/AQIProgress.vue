@@ -10,7 +10,7 @@ const { weather } = useWeatherStore();
     <div class="description">
       <p class="label">AQI</p>
       <div class="value_container">
-        <p class="value">{{ weather.value?.aqi }}</p>
+        <p class="value">300</p>
         <div class="popover_container">
           <BsFillInfoCircleFill class="icon" />
           <div class="popover">
@@ -24,7 +24,7 @@ const { weather } = useWeatherStore();
       <div class="progress-bar">
         <div
           class="progress-bar-fill"
-          :style="{ width: `${((weather.value?.aqi ?? 0) / 500) * 100}%` }"
+          :style="{ width: `${((weather.value?.aqi ?? 0) / 300) * 100}%` }"
         ></div>
       </div>
     </div>
@@ -34,6 +34,7 @@ const { weather } = useWeatherStore();
 <style scoped>
 .container {
   margin: 2rem 0;
+  color: var(--primary-text);
 }
 .description {
   display: flex;

@@ -46,23 +46,23 @@ const props = defineProps<{
 
 .time {
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--primary-text);
 }
 
 .icon {
-  width: 3rem;
-  height: 3rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 .main_temp {
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 700;
   color: var(--primary-text);
 }
 
 .secondary_temp {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--secondary-text);
 }

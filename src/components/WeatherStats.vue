@@ -41,7 +41,7 @@ const { weather } = useWeatherStore();
         <LuGauge class="description_icon" />
         <p class="description_text">AQI</p>
       </div>
-      <p class="stat_value">141</p>
+      <p class="stat_value">{{ weather.value?.aqi ?? "N/A" }}</p>
     </div>
   </div>
 </template>
@@ -74,12 +74,12 @@ const { weather } = useWeatherStore();
 .description_text {
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--primary);
+  color: var(--primary-text);
 }
 
 .stat_value {
   font-size: 0.9rem;
   font-weight: 700;
-  color: var(--primary);
+  color: var(--primary-text);
 }
 </style>

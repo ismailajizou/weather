@@ -6,8 +6,10 @@ import useWeatherStore from "./stores/weather.store";
 import { HourlyData, WeatherData } from "./types/weather.types";
 import { getCurrentLocation } from "./utils/location";
 import extractWeatherData from "./utils/weather";
+import useThemeStore from "./stores/theme.store";
 
 const { weather, setWeather, setIsError, setIsLoading } = useWeatherStore();
+const { theme } = useThemeStore();
 const BASE_URL = "https://api.weatherapi.com/v1";
 onMounted(() => {
   setIsLoading(true);
@@ -34,9 +36,7 @@ onMounted(() => {
     ])
       .then(([{ data: weatherData }, { data: hourly }, { data: aqi }]) => {
         const aqiValue = aqi.data.aqi;
-        setWeather(
-          extractWeatherData(weatherData, hourly, aqiValue)
-        );
+        setWeather(extractWeatherData(weatherData, hourly, aqiValue));
         setIsLoading(false);
       })
       .catch((error) => {
@@ -49,7 +49,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" :class="{ dark: theme.value === 'dark' }">
     <div class="" v-if="weather.isLoading">Loading . . .</div>
     <div class="" v-else-if="weather.isError">Error fetching data</div>
     <WeatherWidget v-else />

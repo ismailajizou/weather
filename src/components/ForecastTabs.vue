@@ -20,7 +20,7 @@ const data = computed(() => {
   } else {
     return (
       weather.value?.future.map((day) => ({
-        label: format(new Date(day.date), "EEEE"),
+        label: format(new Date(day.date), "EE"),
         icon: day.icon,
         mainTemp: Math.round(day.maxTemp[weather.settings.temprature]),
         secondaryTemp: Math.round(day.minTemp[weather.settings.temprature]),

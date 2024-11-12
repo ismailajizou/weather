@@ -3,9 +3,12 @@ import { HiCog6Tooth } from "vue-icons-plus/hi2";
 
 import { ref } from "vue";
 import useWeatherStore from "../stores/weather.store";
+import useThemeStore from "../stores/theme.store";
 
 const { weather, setSettingsMeasurement, setSettingsTemprature } =
   useWeatherStore();
+
+const { theme, setTheme } = useThemeStore();
 
 const isPopupOpen = ref(false);
 
@@ -22,8 +25,26 @@ const togglePopup = () => {
     <div
       class="popup_container"
       :style="{ display: isPopupOpen ? 'flex' : 'none' }"
-      @click.
-      >
+    >
+      <div class="setting">
+        <p class="setting_title">Theme</p>
+        <div class="btn_group">
+          <button
+            class="btn"
+            :class="{ btn_active: theme.value === 'light' }"
+            @click="setTheme('light')"
+          >
+            Light
+          </button>
+          <button
+            class="btn"
+            :class="{ btn_active: theme.value === 'dark' }"
+            @click="setTheme('dark')"
+          >
+            Dark
+          </button>
+        </div>
+      </div>
       <div class="setting">
         <p class="setting_title">Temprature</p>
         <div class="btn_group">
@@ -70,6 +91,7 @@ const togglePopup = () => {
 .container {
   position: relative;
   font-size: 0.8rem;
+  color: var(--primary-text);
 }
 .trigger_btn {
   background-color: var(--primary-background);
