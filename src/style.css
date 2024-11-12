@@ -9,8 +9,8 @@
   /* default theme */
   --primary-background: #f9f9f9;
   --primary-text: #0e121b;
-  --secondary-text: #525866;
-  --secondary-background: #f4f4f5;
+  --secondary-text: #99A0AE;
+  --secondary-background: #F5F7FA;
   --progress-fill: #fb3748;
   --border: #e4e4e7;
   --icons-accent: #335CFF;
@@ -29,6 +29,7 @@
   --disabled: #3e4453;
 }
 
+/* Include Inter font from local files */
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -37,6 +38,8 @@
   src: url("/fonts/inter/Inter-VariableFont.ttf") format("truetype");
 }
 
+
+/* COMMON STYLES */
 .btn_group {
   display: flex;
   gap: 0.5rem;
@@ -50,7 +53,7 @@
   padding: 0.3rem;
   border: none;
   width: 100%;
-  font-weight: 500;
+  font-weight: 600;
   background-color: var(--secondary-background);
   color: var(--secondary-text);
   border-radius: 8px;

@@ -22,7 +22,8 @@ const togglePopup = () => {
     <div
       class="popup_container"
       :style="{ display: isPopupOpen ? 'flex' : 'none' }"
-    >
+      @click.
+      >
       <div class="setting">
         <p class="setting_title">Temprature</p>
         <div class="btn_group">
@@ -78,11 +79,17 @@ const togglePopup = () => {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
+
+.trigger_btn:hover {
+  background-color: var(--secondary-background);
+}
+
 .trigger_btn .icon {
   color: var(--secondary-text);
-  width: 1rem;
-  height: 1rem;
+  width: 1.2rem;
+  height: 1.2rem;
 }
 
 .popup_container {

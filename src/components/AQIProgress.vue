@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { HiInformationCircle } from "vue-icons-plus/hi2";
+import { BsFillInfoCircleFill } from "vue-icons-plus/bs";
 import useWeatherStore from "../stores/weather.store";
 
 const { weather } = useWeatherStore();
@@ -12,7 +12,7 @@ const { weather } = useWeatherStore();
       <div class="value_container">
         <p class="value">{{ weather.value?.aqi }}</p>
         <div class="popover_container">
-          <HiInformationCircle class="icon" />
+          <BsFillInfoCircleFill class="icon" />
           <div class="popover">
             <p class="popover-text">300+ AQI is considered hazardous.</p>
           </div>
@@ -32,6 +32,9 @@ const { weather } = useWeatherStore();
 </template>
 
 <style scoped>
+.container {
+  margin: 2rem 0;
+}
 .description {
   display: flex;
   justify-content: space-between;
@@ -42,6 +45,7 @@ const { weather } = useWeatherStore();
   align-items: center;
   gap: 0.5rem;
 }
+
 .popover_container {
   position: relative;
 }

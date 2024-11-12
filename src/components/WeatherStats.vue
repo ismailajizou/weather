@@ -50,7 +50,7 @@ const { weather } = useWeatherStore();
 .weather_stats_container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
+  gap: 1rem 4rem;
   margin: 1rem 0;
 }
 
@@ -72,13 +72,13 @@ const { weather } = useWeatherStore();
 }
 
 .description_text {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--primary);
 }
 
 .stat_value {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--primary);
 }

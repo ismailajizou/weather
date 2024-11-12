@@ -23,11 +23,17 @@ const props = defineProps<{
 
 <style scoped>
 .forecast_container {
+  position: relative;
   display: flex;
   gap: 1rem;
   overflow-x: auto;
   padding: 1rem;
 }
+/* hide scrollbar */
+.forecast_container::-webkit-scrollbar {
+  display: none;
+}
+
 
 .forecast_card {
   display: flex;

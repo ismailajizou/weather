@@ -9,7 +9,11 @@ const { weather } = useWeatherStore();
     <div class="weather_icon_container">
       <img :src="weather.value?.current.icon" alt="weather icon" class="icon" />
       <p class="temp_value">
-        {{ weather.value?.current.temperature[weather.settings.temprature] }}
+        {{
+          Math.round(
+            weather.value?.current.temperature[weather.settings.temprature] ?? 0
+          )
+        }}°
       </p>
     </div>
 
@@ -17,7 +21,7 @@ const { weather } = useWeatherStore();
       <p class="description">{{ weather.value?.current.condition }}</p>
       <p class="feels_like">
         Feels like
-        {{ weather.value?.current.feelsLike[weather.settings.temprature] }}
+        {{ Math.round(weather.value?.current.feelsLike[weather.settings.temprature] ?? 0) }}°
       </p>
     </div>
   </div>
@@ -27,7 +31,7 @@ const { weather } = useWeatherStore();
 .weather_overview_container {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 0;
   align-items: center;
 }
 .weather_icon_container {
@@ -54,9 +58,12 @@ const { weather } = useWeatherStore();
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-text);
+  margin-bottom: .5rem;
+
 }
 
 .feels_like {
   color: var(--secondary-text);
+  font-weight: 500;
 }
 </style>

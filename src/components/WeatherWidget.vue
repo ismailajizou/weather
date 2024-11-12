@@ -18,7 +18,7 @@ import WeatherStats from "./WeatherStats.vue";
 
 <style scoped>
 .widget {
-  max-width: 40rem;
+  max-width: 42rem;
   width: 100%;
   background-color: var(--primary-background);
   border: 1px solid var(--border);
