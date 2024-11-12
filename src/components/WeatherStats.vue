@@ -21,7 +21,7 @@ const WIND_MPH_TO_KMPH_RATIO = 1.60934;
         <LuCloudRain class="description_icon" />
         <p class="description_text">Precipitation</p>
       </div>
-      <p class="stat_value">{{ weather.value?.current.precip_mm }} mm</p>
+      <p class="stat_value">{{ weather.value?.current.precipitation }} mm</p>
     </div>
     <div class="stat_container">
       <div class="description">
@@ -29,7 +29,7 @@ const WIND_MPH_TO_KMPH_RATIO = 1.60934;
         <p class="description_text">Wind</p>
       </div>
       <p class="stat_value">
-        {{ (weather.value?.current.wind_mph ?? 0) * WIND_MPH_TO_KMPH_RATIO }}
+        {{ weather.value?.current.wind }}
         km/h
       </p>
     </div>

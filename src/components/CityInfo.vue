@@ -8,13 +8,13 @@ const { weather } = useWeatherStore();
 <template>
   <div class="city_info_container">
     <div class="city_details_container">
-      <h2 class="city_name">{{ weather.value?.location.name }}</h2>
+      <h2 class="city_name">{{ weather.value?.main.city }}</h2>
       <div class="date_time_info">
         <p class="date">
-          {{ format(new Date(weather.value?.location.localtime ?? new Date()), "EEEE, MMMM d, yyyy") }}
+          {{ format(new Date(weather.value?.main.datetime ?? new Date()), "EEEE, MMMM d, yyyy") }}
         </p>
         <p class="time">
-          {{ format(new Date(weather.value?.location.localtime ?? new Date()), "h:mm a") }}
+          {{ format(new Date(weather.value?.main.datetime ?? new Date()), "h:mm a") }}
         </p>
       </div>
     </div>

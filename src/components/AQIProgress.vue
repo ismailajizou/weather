@@ -51,6 +51,7 @@ import { HiInformationCircle } from "vue-icons-plus/hi2";
   display: none;
   font-size: 0.7rem;
   width: max-content;
+  z-index: 20;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 

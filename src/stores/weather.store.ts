@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
-import { WeatherData } from "../types/weather.types";
-import { reactive, ref } from "vue";
+import { reactive } from "vue";
+import { WidgetData } from "../types/weather.types";
 
 interface WeatherState {
   isLoading: boolean;
   isError: boolean;
-  value: WeatherData | null;
+  value: WidgetData | null;
 }
 
 const useWeatherStore = defineStore("weather", () => {
@@ -16,7 +16,7 @@ const useWeatherStore = defineStore("weather", () => {
     isError: false,
   });
 
-  function setWeather(newWeather: WeatherData) {
+  function setWeather(newWeather: WidgetData) {
     weather.value = newWeather;
   }
 

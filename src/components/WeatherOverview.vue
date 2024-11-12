@@ -8,17 +8,17 @@ const { weather } = useWeatherStore();
   <div class="weather_overview_container">
     <div class="weather_icon_container">
       <img
-        :src="weather.value?.current.condition.icon"
+        :src="weather.value?.current.icon"
         alt="weather icon"
         class="icon"
       />
-      <p class="temp_value">{{ weather.value?.current.temp_c }} °C</p>
+      <p class="temp_value">{{ weather.value?.current.temperature }} °C</p>
     </div>
 
     <div class="weather_description">
-      <p class="description">{{ weather.value?.current.condition.text }}</p>
+      <p class="description">{{ weather.value?.current.condition }}</p>
       <p class="feels_like">
-        Feels like {{ weather.value?.current.feelslike_c }} °C
+        Feels like {{ weather.value?.current.feelsLike }} °C
       </p>
     </div>
   </div>
