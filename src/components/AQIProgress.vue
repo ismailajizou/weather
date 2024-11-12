@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { HiInformationCircle } from "vue-icons-plus/hi2";
+import useWeatherStore from "../stores/weather.store";
+
+const { weather } = useWeatherStore();
 </script>
 
 <template>
@@ -7,7 +10,7 @@ import { HiInformationCircle } from "vue-icons-plus/hi2";
     <div class="description">
       <p class="label">AQI</p>
       <div class="value_container">
-        <p class="value">300</p>
+        <p class="value">{{ weather.value?.aqi }}</p>
         <div class="popover_container">
           <HiInformationCircle class="icon" />
           <div class="popover">
@@ -19,7 +22,10 @@ import { HiInformationCircle } from "vue-icons-plus/hi2";
     <div class="progress">
       <!-- AQI (Air Quality Index) is a value from 0 to 500 -->
       <div class="progress-bar">
-        <div class="progress-bar-fill" :style="{ width: '10%'}"></div>
+        <div
+          class="progress-bar-fill"
+          :style="{ width: `${((weather.value?.aqi ?? 0) / 500) * 100}%` }"
+        ></div>
       </div>
     </div>
   </div>

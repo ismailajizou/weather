@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
+import { format } from "date-fns";
+import { computed, ref } from "vue";
 import useWeatherStore from "../stores/weather.store";
 import ForecastTabData from "./ForecastTabData.vue";
-import { format } from "date-fns";
 const { weather } = useWeatherStore();
 
 const tabId = ref<"hourly" | "daily">("hourly");
@@ -13,7 +13,7 @@ const data = computed(() => {
       weather.value?.hourly.map((hour) => ({
         label: format(new Date(hour.time), "HH:mm"),
         icon: hour.icon,
-        mainTemp: Math.round(hour.temperature),
+        mainTemp: Math.round(hour.temperature[weather.settings.temprature]),
         secondaryTemp: null as number | null,
       })) ?? []
     );
@@ -22,8 +22,8 @@ const data = computed(() => {
       weather.value?.future.map((day) => ({
         label: format(new Date(day.date), "EEEE"),
         icon: day.icon,
-        mainTemp: Math.round(day.maxTemp),
-        secondaryTemp: Math.round(day.minTemp),
+        mainTemp: Math.round(day.maxTemp[weather.settings.temprature]),
+        secondaryTemp: Math.round(day.minTemp[weather.settings.temprature]),
       })) ?? []
     );
   }

@@ -1,23 +1,20 @@
 <script setup lang="ts">
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
+import { onMounted } from "vue";
 import WeatherWidget from "./components/WeatherWidget.vue";
 import useWeatherStore from "./stores/weather.store";
+import { HourlyData, WeatherData } from "./types/weather.types";
 import { getCurrentLocation } from "./utils/location";
-import { onMounted } from "vue";
-import { FutureForecastData, HourlyData, WeatherData } from "./types/weather.types";
 import extractWeatherData from "./utils/weather";
-import { addDays, format } from "date-fns";
 
 const { weather, setWeather, setIsError, setIsLoading } = useWeatherStore();
 const BASE_URL = "https://api.weatherapi.com/v1";
-const now = new Date();
 onMounted(() => {
   setIsLoading(true);
   setIsError(false);
   // get the geolocation of the user
   getCurrentLocation().then((position) => {
     const { lon, lat } = position;
-    console.log(lon, lat);
     Promise.all([
       axios.get<WeatherData>(
         `${BASE_URL}/current.json?key=${
@@ -29,18 +26,16 @@ onMounted(() => {
           import.meta.env.VITE_WEATHER_API_KEY
         }&q=${lat},${lon}&days=7`
       ),
-      // axios.get<FutureForecastData>(
-      //   `${BASE_URL}/future.json?key=${
-      //     import.meta.env.VITE_WEATHER_API_KEY
-      //   }&q=${lat},${lon}&dt=${format(addDays(now, 15), "yyyy-MM-dd")}`
-      // ),
+      axios.get(
+        `https://api.waqi.info/feed/geo:${lat};${lon}/?token=${
+          import.meta.env.VITE_AQI_API_TOKEN
+        }`
+      ),
     ])
-      .then(([{ data: weather }, { data: hourly }]) => {
+      .then(([{ data: weatherData }, { data: hourly }, { data: aqi }]) => {
+        const aqiValue = aqi.data.aqi;
         setWeather(
-          extractWeatherData(weather, hourly, {
-            measurement: "metric",
-            temprature: "c",
-          })
+          extractWeatherData(weatherData, hourly, aqiValue)
         );
         setIsLoading(false);
       })

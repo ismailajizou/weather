@@ -4,7 +4,6 @@ import { RiDropLine, RiWindyLine } from "vue-icons-plus/ri";
 import useWeatherStore from "../stores/weather.store";
 
 const { weather } = useWeatherStore();
-const WIND_MPH_TO_KMPH_RATIO = 1.60934;
 </script>
 
 <template>
@@ -14,14 +13,17 @@ const WIND_MPH_TO_KMPH_RATIO = 1.60934;
         <RiDropLine class="description_icon" />
         <p class="description_text">Humidity</p>
       </div>
-      <p class="stat_value">{{ weather.value?.current.humidity }}</p>
+      <p class="stat_value">{{ weather.value?.current.humidity }} %</p>
     </div>
     <div class="stat_container">
       <div class="description">
         <LuCloudRain class="description_icon" />
         <p class="description_text">Precipitation</p>
       </div>
-      <p class="stat_value">{{ weather.value?.current.precipitation }} mm</p>
+      <p class="stat_value">
+        {{ weather.value?.current.precipitation[weather.settings.measurement] }}
+        {{ weather.settings.measurement === "metric" ? "mm" : "in" }}
+      </p>
     </div>
     <div class="stat_container">
       <div class="description">
@@ -29,8 +31,8 @@ const WIND_MPH_TO_KMPH_RATIO = 1.60934;
         <p class="description_text">Wind</p>
       </div>
       <p class="stat_value">
-        {{ weather.value?.current.wind }}
-        km/h
+        {{ weather.value?.current.wind[weather.settings.measurement] }}
+        {{ weather.settings.measurement === "metric" ? "km/h" : "mph" }}
       </p>
     </div>
 

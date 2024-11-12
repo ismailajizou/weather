@@ -1,14 +1,13 @@
 import {
   HourlyData,
-  Settings,
   WeatherData,
-  WidgetData,
+  WidgetData
 } from "../types/weather.types";
 
 function extractWeatherData(
   current: WeatherData,
   hourly: HourlyData,
-  settings: Settings
+  aqi: number
 ): WidgetData {
   const main = {
     datetime: current.location.localtime,
@@ -16,25 +15,25 @@ function extractWeatherData(
   };
 
   const currentWeather = {
-    temperature:
-      settings.temprature === "c"
-        ? current.current.temp_c
-        : current.current.temp_f,
+    temperature: {
+      c: current.current.temp_c,
+      f: current.current.temp_f,
+    },
     condition: current.current.condition.text,
     icon: current.current.condition.icon,
-    feelsLike:
-      settings.temprature === "c"
-        ? current.current.feelslike_c
-        : current.current.feelslike_f,
-    wind:
-      settings.measurement === "metric"
-        ? current.current.wind_kph
-        : current.current.wind_mph,
+    feelsLike: {
+      c: current.current.feelslike_c,
+      f: current.current.feelslike_f,
+    },
+    wind: {
+      imperial: current.current.wind_mph,
+      metric: current.current.wind_kph,
+    },
     humidity: current.current.humidity,
-    precipitation:
-      settings.measurement === "metric"
-        ? current.current.precip_mm
-        : current.current.precip_in,
+    precipitation: {
+      imperial: current.current.precip_in,
+      metric: current.current.precip_mm,
+    },
   };
 
   const hourlyWeather = hourly.forecast.forecastday[0].hour
@@ -44,21 +43,23 @@ function extractWeatherData(
     })
     .map((hour) => ({
       time: hour.time,
-      temperature: settings.temprature === "c" ? hour.temp_c : hour.temp_f,
+      temperature: {
+        c: hour.temp_c,
+        f: hour.temp_f,
+      },
       icon: hour.condition.icon,
     }));
 
   const futureWeather = hourly.forecast.forecastday.map((day) => ({
     date: day.date,
-    maxTemp:
-      settings.temprature === "c" ? day.day.maxtemp_c : day.day.maxtemp_f,
-    minTemp:
-      settings.temprature === "c" ? day.day.mintemp_c : day.day.mintemp_f,
+    maxTemp: { c: day.day.maxtemp_c, f: day.day.maxtemp_f },
+    minTemp: { c: day.day.mintemp_c, f: day.day.mintemp_f },
     icon: day.day.condition.icon,
   }));
 
   return {
     main,
+    aqi,
     future: futureWeather,
     current: currentWeather,
     hourly: hourlyWeather,

@@ -169,27 +169,27 @@ export interface WidgetData {
     datetime: string;
     city: string;
   };
-
+  aqi: number;
   current: {
-    temperature: number;
+    temperature: {c: number, f: number};
     condition: string;
     icon: string;
-    feelsLike: number;
-    wind: number;
+    feelsLike: {c: number, f: number};
+    wind: {imperial: number, metric: number};
     humidity: number;
-    precipitation: number;
+    precipitation: {imperial: number, metric: number};
   };
 
   hourly: {
     time: string;
-    temperature: number;
+    temperature: {c: number, f: number};
     icon: string;
   }[];
 
   future: {
     date: string;
-    maxTemp: number;
-    minTemp: number;
+    maxTemp: {c: number, f: number};
+    minTemp: {c: number, f: number};
     icon: string;
   }[];
 }

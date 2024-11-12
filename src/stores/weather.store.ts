@@ -6,11 +6,19 @@ interface WeatherState {
   isLoading: boolean;
   isError: boolean;
   value: WidgetData | null;
+  settings: {
+    measurement: "metric" | "imperial";
+    temprature: "c" | "f";
+  };
 }
 
 const useWeatherStore = defineStore("weather", () => {
   //   init the weather state with an empty object
   const weather = reactive<WeatherState>({
+    settings: {
+      measurement: "metric",
+      temprature: "c",
+    },
     value: null,
     isLoading: false,
     isError: false,
@@ -28,11 +36,21 @@ const useWeatherStore = defineStore("weather", () => {
     weather.isError = value;
   };
 
+  const setSettingsMeasurement = (value: "metric" | "imperial") => {
+    weather.settings.measurement = value;
+  }
+
+  const setSettingsTemprature = (value: "c" | "f") => {
+    weather.settings.temprature = value;
+  }
+
   return {
     weather,
     setWeather,
     setIsLoading,
     setIsError,
+    setSettingsMeasurement,
+    setSettingsTemprature,
   };
 });
 
