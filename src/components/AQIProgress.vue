@@ -44,9 +44,9 @@ import { HiInformationCircle } from "vue-icons-plus/hi2";
   position: absolute;
   top: -2.5rem;
   right: -1rem;
-  background-color: var(--background);
+  background-color: var(--primary-background);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 0.5rem;
   padding: 0.5rem;
   display: none;
   font-size: 0.7rem;
@@ -61,7 +61,7 @@ import { HiInformationCircle } from "vue-icons-plus/hi2";
   top: 100%;
   right: 1rem;
   border: 0.5rem solid transparent;
-  border-top-color: var(--secondary-background);
+  border-top-color: var(--primary-background);
 }
 
 .popover_container:hover .popover {

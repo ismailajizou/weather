@@ -141,6 +141,23 @@ export interface Hour {
   uv: number;
 }
 
+export interface FutureForecastData {
+  location: Location;
+  forecast: Forecast;
+}
+
+export interface Forecast {
+  forecastday: Forecastday[];
+}
+
+export interface Astro2 {
+  sunrise: string;
+  sunset: string;
+  moonrise: string;
+  moonset: string;
+  moon_phase: string;
+  moon_illumination: string;
+}
 
 export interface Settings {
   measurement: "metric" | "imperial";
@@ -166,6 +183,13 @@ export interface WidgetData {
   hourly: {
     time: string;
     temperature: number;
+    icon: string;
+  }[];
+
+  future: {
+    date: string;
+    maxTemp: number;
+    minTemp: number;
     icon: string;
   }[];
 }

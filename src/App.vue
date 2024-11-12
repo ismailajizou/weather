@@ -4,12 +4,13 @@ import WeatherWidget from "./components/WeatherWidget.vue";
 import useWeatherStore from "./stores/weather.store";
 import { getCurrentLocation } from "./utils/location";
 import { onMounted } from "vue";
-import { HourlyData, WeatherData } from "./types/weather.types";
+import { FutureForecastData, HourlyData, WeatherData } from "./types/weather.types";
 import extractWeatherData from "./utils/weather";
+import { addDays, format } from "date-fns";
 
 const { weather, setWeather, setIsError, setIsLoading } = useWeatherStore();
 const BASE_URL = "https://api.weatherapi.com/v1";
-
+const now = new Date();
 onMounted(() => {
   setIsLoading(true);
   setIsError(false);
@@ -26,8 +27,13 @@ onMounted(() => {
       axios.get<HourlyData>(
         `${BASE_URL}/forecast.json?key=${
           import.meta.env.VITE_WEATHER_API_KEY
-        }&q=${lat},${lon}&days=1`
+        }&q=${lat},${lon}&days=7`
       ),
+      // axios.get<FutureForecastData>(
+      //   `${BASE_URL}/future.json?key=${
+      //     import.meta.env.VITE_WEATHER_API_KEY
+      //   }&q=${lat},${lon}&dt=${format(addDays(now, 15), "yyyy-MM-dd")}`
+      // ),
     ])
       .then(([{ data: weather }, { data: hourly }]) => {
         setWeather(

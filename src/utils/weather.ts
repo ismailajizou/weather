@@ -37,14 +37,29 @@ function extractWeatherData(
         : current.current.precip_in,
   };
 
-  const hourlyWeather = hourly.forecast.forecastday[0].hour.map((hour) => ({
-    time: hour.time,
-    temperature: settings.temprature === "c" ? hour.temp_c : hour.temp_f,
-    icon: hour.condition.icon,
+  const hourlyWeather = hourly.forecast.forecastday[0].hour
+    .filter((hour) => {
+      // filter out the hours that are not in the future
+      return new Date(hour.time) > new Date();
+    })
+    .map((hour) => ({
+      time: hour.time,
+      temperature: settings.temprature === "c" ? hour.temp_c : hour.temp_f,
+      icon: hour.condition.icon,
+    }));
+
+  const futureWeather = hourly.forecast.forecastday.map((day) => ({
+    date: day.date,
+    maxTemp:
+      settings.temprature === "c" ? day.day.maxtemp_c : day.day.maxtemp_f,
+    minTemp:
+      settings.temprature === "c" ? day.day.mintemp_c : day.day.mintemp_f,
+    icon: day.day.condition.icon,
   }));
 
   return {
     main,
+    future: futureWeather,
     current: currentWeather,
     hourly: hourlyWeather,
   };
