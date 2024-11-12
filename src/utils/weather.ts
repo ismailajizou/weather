@@ -1,18 +1,14 @@
-import {
-  HourlyData,
-  WeatherData,
-  WidgetData
-} from "../types/weather.types";
+import { HourlyData, WeatherData, WidgetData } from '../types/weather.types'
 
 function extractWeatherData(
   current: WeatherData,
   hourly: HourlyData,
-  aqi: number
+  aqi: number,
 ): WidgetData {
   const main = {
     datetime: current.location.localtime,
     city: current.location.name,
-  };
+  }
 
   const currentWeather = {
     temperature: {
@@ -34,12 +30,12 @@ function extractWeatherData(
       imperial: current.current.precip_in,
       metric: current.current.precip_mm,
     },
-  };
+  }
 
   const hourlyWeather = hourly.forecast.forecastday[0].hour
     .filter((hour) => {
       // filter out the hours that are not in the future
-      return new Date(hour.time) > new Date();
+      return new Date(hour.time) > new Date()
     })
     .map((hour) => ({
       time: hour.time,
@@ -48,14 +44,14 @@ function extractWeatherData(
         f: hour.temp_f,
       },
       icon: hour.condition.icon,
-    }));
+    }))
 
   const futureWeather = hourly.forecast.forecastday.map((day) => ({
     date: day.date,
     maxTemp: { c: day.day.maxtemp_c, f: day.day.maxtemp_f },
     minTemp: { c: day.day.mintemp_c, f: day.day.mintemp_f },
     icon: day.day.condition.icon,
-  }));
+  }))
 
   return {
     main,
@@ -63,7 +59,7 @@ function extractWeatherData(
     future: futureWeather,
     current: currentWeather,
     hourly: hourlyWeather,
-  };
+  }
 }
 
-export default extractWeatherData;
+export default extractWeatherData

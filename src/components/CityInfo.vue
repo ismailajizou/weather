@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import useWeatherStore from "../stores/weather.store";
-import SettingsPopup from "./SettingsPopup.vue";
-import { format } from "date-fns";
-const { weather } = useWeatherStore();
+import useWeatherStore from '../stores/weather.store'
+import SettingsPopup from './SettingsPopup.vue'
+import { format } from 'date-fns'
+const { weather } = useWeatherStore()
 </script>
 
 <template>
@@ -14,7 +14,7 @@ const { weather } = useWeatherStore();
           {{
             format(
               new Date(weather.value?.main.datetime ?? new Date()),
-              "EEEE, MMMM d, yyyy"
+              'EEEE, MMMM d, yyyy',
             )
           }}
         </p>
@@ -22,7 +22,7 @@ const { weather } = useWeatherStore();
           {{
             format(
               new Date(weather.value?.main.datetime ?? new Date()),
-              "h:mm a"
+              'h:mm a',
             )
           }}
         </p>

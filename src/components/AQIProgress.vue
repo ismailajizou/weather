@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { BsFillInfoCircleFill } from "vue-icons-plus/bs";
-import useWeatherStore from "../stores/weather.store";
+import { BsFillInfoCircleFill } from 'vue-icons-plus/bs'
+import useWeatherStore from '../stores/weather.store'
 
-const { weather } = useWeatherStore();
+const { weather } = useWeatherStore()
 </script>
 
 <template>
@@ -67,7 +67,7 @@ const { weather } = useWeatherStore();
 }
 
 .popover::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 100%;
   right: 1rem;

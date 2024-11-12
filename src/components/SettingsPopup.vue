@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { HiCog6Tooth } from "vue-icons-plus/hi2";
+import { HiCog6Tooth } from 'vue-icons-plus/hi2'
 
-import { ref } from "vue";
-import useWeatherStore from "../stores/weather.store";
-import useThemeStore from "../stores/theme.store";
+import { ref } from 'vue'
+import useWeatherStore from '../stores/weather.store'
+import useThemeStore from '../stores/theme.store'
 
 const { weather, setSettingsMeasurement, setSettingsTemprature } =
-  useWeatherStore();
+  useWeatherStore()
 
-const { theme, setTheme } = useThemeStore();
+const { theme, setTheme } = useThemeStore()
 
-const isPopupOpen = ref(false);
+const isPopupOpen = ref(false)
 
 const togglePopup = () => {
-  isPopupOpen.value = !isPopupOpen.value;
-};
+  isPopupOpen.value = !isPopupOpen.value
+}
 </script>
 
 <template>

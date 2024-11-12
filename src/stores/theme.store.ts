@@ -1,20 +1,20 @@
-import { defineStore } from "pinia";
-import { reactive } from "vue";
+import { defineStore } from 'pinia'
+import { reactive } from 'vue'
 
-const useThemeStore = defineStore("theme", () => {
-  const theme = reactive<{ value: "dark" | "light" }>({ value: "light" });
+const useThemeStore = defineStore('theme', () => {
+  const theme = reactive<{ value: 'dark' | 'light' }>({ value: 'light' })
   const toggleTheme = () => {
-    theme.value = theme.value === "dark" ? "light" : "dark";
-  };
+    theme.value = theme.value === 'dark' ? 'light' : 'dark'
+  }
 
-  const setTheme = (newTheme: "dark" | "light") => {
-    theme.value = newTheme;
-  };
+  const setTheme = (newTheme: 'dark' | 'light') => {
+    theme.value = newTheme
+  }
   return {
     theme,
     toggleTheme,
     setTheme,
-  };
-});
+  }
+})
 
-export default useThemeStore;
+export default useThemeStore

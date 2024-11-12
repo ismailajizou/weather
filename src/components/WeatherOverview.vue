@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import useWeatherStore from "../stores/weather.store";
+import useWeatherStore from '../stores/weather.store'
 
-const { weather } = useWeatherStore();
+const { weather } = useWeatherStore()
 </script>
 
 <template>
@@ -11,7 +11,8 @@ const { weather } = useWeatherStore();
       <p class="temp_value">
         {{
           Math.round(
-            weather.value?.current.temperature[weather.settings.temprature] ?? 0
+            weather.value?.current.temperature[weather.settings.temprature] ??
+              0,
           )
         }}°
       </p>
@@ -21,7 +22,11 @@ const { weather } = useWeatherStore();
       <p class="description">{{ weather.value?.current.condition }}</p>
       <p class="feels_like">
         Feels like
-        {{ Math.round(weather.value?.current.feelsLike[weather.settings.temprature] ?? 0) }}°
+        {{
+          Math.round(
+            weather.value?.current.feelsLike[weather.settings.temprature] ?? 0,
+          )
+        }}°
       </p>
     </div>
   </div>
@@ -58,8 +63,7 @@ const { weather } = useWeatherStore();
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--primary-text);
-  margin-bottom: .5rem;
-
+  margin-bottom: 0.5rem;
 }
 
 .feels_like {

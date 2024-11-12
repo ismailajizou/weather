@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { LuCloudRain, LuGauge } from "vue-icons-plus/lu";
-import { RiDropLine, RiWindyLine } from "vue-icons-plus/ri";
-import useWeatherStore from "../stores/weather.store";
+import { LuCloudRain, LuGauge } from 'vue-icons-plus/lu'
+import { RiDropLine, RiWindyLine } from 'vue-icons-plus/ri'
+import useWeatherStore from '../stores/weather.store'
 
-const { weather } = useWeatherStore();
+const { weather } = useWeatherStore()
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const { weather } = useWeatherStore();
       </div>
       <p class="stat_value">
         {{ weather.value?.current.precipitation[weather.settings.measurement] }}
-        {{ weather.settings.measurement === "metric" ? "mm" : "in" }}
+        {{ weather.settings.measurement === 'metric' ? 'mm' : 'in' }}
       </p>
     </div>
     <div class="stat_container">
@@ -32,7 +32,7 @@ const { weather } = useWeatherStore();
       </div>
       <p class="stat_value">
         {{ weather.value?.current.wind[weather.settings.measurement] }}
-        {{ weather.settings.measurement === "metric" ? "km/h" : "mph" }}
+        {{ weather.settings.measurement === 'metric' ? 'km/h' : 'mph' }}
       </p>
     </div>
 
@@ -41,7 +41,7 @@ const { weather } = useWeatherStore();
         <LuGauge class="description_icon" />
         <p class="description_text">AQI</p>
       </div>
-      <p class="stat_value">{{ weather.value?.aqi ?? "N/A" }}</p>
+      <p class="stat_value">{{ weather.value?.aqi ?? 'N/A' }}</p>
     </div>
   </div>
 </template>

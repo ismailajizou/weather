@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import AQIProgress from "./AQIProgress.vue";
-import CityInfo from "./CityInfo.vue";
-import ForecastTabs from "./ForecastTabs.vue";
-import WeatherOverview from "./WeatherOverview.vue";
-import WeatherStats from "./WeatherStats.vue";
+import AQIProgress from './AQIProgress.vue'
+import CityInfo from './CityInfo.vue'
+import ForecastTabs from './ForecastTabs.vue'
+import WeatherOverview from './WeatherOverview.vue'
+import WeatherStats from './WeatherStats.vue'
 </script>
 
 <template>

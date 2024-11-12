@@ -1,22 +1,24 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps } from 'vue'
 const props = defineProps<{
   data: {
-    label: string;
-    icon: string;
-    mainTemp: number;
-    secondaryTemp: number | null;
-  }[];
-}>();
+    label: string
+    icon: string
+    mainTemp: number
+    secondaryTemp: number | null
+  }[]
+}>()
 </script>
 
 <template>
   <div class="forecast_container">
-    <div class="forecast_card" v-for="hour in props.data">
+    <div class="forecast_card" v-for="hour in props.data" :key="hour.label">
       <p class="time">{{ hour.label }}</p>
       <img :src="hour.icon" alt="cloudy" class="icon" />
       <p class="main_temp">{{ hour.mainTemp }}°</p>
-      <p class="secondary_temp" v-if="hour.secondaryTemp">{{ hour.secondaryTemp }}°</p>
+      <p class="secondary_temp" v-if="hour.secondaryTemp">
+        {{ hour.secondaryTemp }}°
+      </p>
     </div>
   </div>
 </template>
@@ -33,7 +35,6 @@ const props = defineProps<{
 .forecast_container::-webkit-scrollbar {
   display: none;
 }
-
 
 .forecast_card {
   display: flex;
@@ -56,7 +57,7 @@ const props = defineProps<{
 }
 
 .main_temp {
-  font-size: .9rem;
+  font-size: 0.9rem;
   font-weight: 700;
   color: var(--primary-text);
 }
