@@ -1,6 +1,50 @@
-# Vue 3 + TypeScript + Vite
+# Weather Application
+This is a simple weather application that uses the [Weather API ](https://www.weatherapi.com/) to get the weather data for your current location.
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+### Table of Contents
+- [Features](#features)
+- [Technologies](#technologies)
+- [Setup](#setup)
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
-# weather
+## Features
+- Get the current weather data for your location
+- Get the weather forecast for the next 7 days
+- Get the weather forecast for the remaining hours of the day
+- Get the weather details (wind speed, humidity, AQI, precipitation)
+- Customizable units (Imperial, Metric)
+
+## Technologies
+- Vue.js 3
+- Vanilla CSS
+- [Weather API ](https://www.weatherapi.com/)
+- [AQI API](https://aqicn.org/api/fr/)
+- Pinia (Vue 3 Store)
+- Axios
+- Typescript 5
+- Vue icons
+- Date-fns
+
+## Setup
+1. Clone the repository
+```bash
+git clone https://github.com/ismailajizou/weather.git
+```
+2. Install the dependencies
+```bash
+yarn
+```
+3. Create a `.env` file at the root of the project and add the variables in the `.env.example` file
+
+4. Run the application in development mode
+```bash
+yarn dev
+```
+5. Build the application for production
+```bash
+yarn build
+```
+6. Run the application in production mode
+```bash
+yarn start
+```
+
