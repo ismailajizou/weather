@@ -1,34 +1,42 @@
 <script setup lang="ts">
-import { XMarkIcon } from "@heroicons/vue/24/outline";
+import { LuCloudRain, LuGauge } from "vue-icons-plus/lu";
+import { RiDropLine, RiWindyLine } from "vue-icons-plus/ri";
+import useWeatherStore from "../stores/weather.store";
+
+const { weather } = useWeatherStore();
+const WIND_MPH_TO_KMPH_RATIO = 1.60934;
 </script>
 
 <template>
   <div class="weather_stats_container">
     <div class="stat_container">
       <div class="description">
-        <XMarkIcon class="description_icon" />
+        <RiDropLine class="description_icon" />
         <p class="description_text">Humidity</p>
       </div>
-      <p class="stat_value">40%</p>
+      <p class="stat_value">{{ weather.value?.current.humidity }}</p>
     </div>
     <div class="stat_container">
       <div class="description">
-        <XMarkIcon class="description_icon" />
+        <LuCloudRain class="description_icon" />
         <p class="description_text">Precipitation</p>
       </div>
-      <p class="stat_value">15%</p>
+      <p class="stat_value">{{ weather.value?.current.precip_mm }} mm</p>
     </div>
     <div class="stat_container">
       <div class="description">
-        <XMarkIcon class="description_icon" />
+        <RiWindyLine class="description_icon" />
         <p class="description_text">Wind</p>
       </div>
-      <p class="stat_value">1 km/h</p>
+      <p class="stat_value">
+        {{ (weather.value?.current.wind_mph ?? 0) * WIND_MPH_TO_KMPH_RATIO }}
+        km/h
+      </p>
     </div>
 
     <div class="stat_container">
       <div class="description">
-        <XMarkIcon class="description_icon" />
+        <LuGauge class="description_icon" />
         <p class="description_text">AQI</p>
       </div>
       <p class="stat_value">141</p>
@@ -56,7 +64,7 @@ import { XMarkIcon } from "@heroicons/vue/24/outline";
   gap: 0.5rem;
 }
 .description_icon {
-  color: var(--muted-foreground);
+  color: var(--icons-accent);
   width: 1.5rem;
   height: 1.5rem;
 }

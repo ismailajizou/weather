@@ -1,17 +1,25 @@
 <script setup lang="ts">
-import { CloudIcon } from "@heroicons/vue/24/outline";
+import useWeatherStore from "../stores/weather.store";
+
+const { weather } = useWeatherStore();
 </script>
 
 <template>
   <div class="weather_overview_container">
     <div class="weather_icon_container">
-      <CloudIcon class="icon" />
-      <p class="temp_value">22°C</p>
+      <img
+        :src="weather.value?.current.condition.icon"
+        alt="weather icon"
+        class="icon"
+      />
+      <p class="temp_value">{{ weather.value?.current.temp_c }} °C</p>
     </div>
 
     <div class="weather_description">
-      <p class="description">Partially Cloudy</p>
-      <p class="feels_like">Feels like 22°C</p>
+      <p class="description">{{ weather.value?.current.condition.text }}</p>
+      <p class="feels_like">
+        Feels like {{ weather.value?.current.feelslike_c }} °C
+      </p>
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Cog6ToothIcon } from "@heroicons/vue/24/solid";
+import { HiCog6Tooth } from "vue-icons-plus/hi2";
 
 import { ref } from "vue";
 
@@ -13,7 +13,7 @@ const togglePopup = () => {
 <template>
   <div class="container">
     <button class="trigger_btn" @click="togglePopup">
-      <Cog6ToothIcon class="icon" />
+      <HiCog6Tooth class="icon" />
     </button>
     <div
       class="popup_container"

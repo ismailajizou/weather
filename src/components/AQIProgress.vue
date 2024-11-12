@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { InformationCircleIcon } from "@heroicons/vue/24/solid";
+import { HiInformationCircle } from "vue-icons-plus/hi2";
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import { InformationCircleIcon } from "@heroicons/vue/24/solid";
       <div class="value_container">
         <p class="value">300</p>
         <div class="popover_container">
-          <InformationCircleIcon class="icon" />
+          <HiInformationCircle class="icon" />
           <div class="popover">
             <p class="popover-text">300+ AQI is considered hazardous.</p>
           </div>

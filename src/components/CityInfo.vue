@@ -1,14 +1,21 @@
 <script setup lang="ts">
+import useWeatherStore from "../stores/weather.store";
 import SettingsPopup from "./SettingsPopup.vue";
+import { format } from "date-fns";
+const { weather } = useWeatherStore();
 </script>
 
 <template>
   <div class="city_info_container">
     <div class="city_details_container">
-      <h2 class="city_name">Casablanca</h2>
+      <h2 class="city_name">{{ weather.value?.location.name }}</h2>
       <div class="date_time_info">
-        <p class="date">Friday, November 8, 2024</p>
-        <p class="time">9:09 PM</p>
+        <p class="date">
+          {{ format(new Date(weather.value?.location.localtime ?? new Date()), "EEEE, MMMM d, yyyy") }}
+        </p>
+        <p class="time">
+          {{ format(new Date(weather.value?.location.localtime ?? new Date()), "h:mm a") }}
+        </p>
       </div>
     </div>
 

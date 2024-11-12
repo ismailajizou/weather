@@ -1,10 +1,52 @@
 <script setup lang="ts">
+import axios, { AxiosResponse } from "axios";
 import WeatherWidget from "./components/WeatherWidget.vue";
+import useWeatherStore from "./stores/weather.store";
+import { getCurrentLocation } from "./utils/location";
+import { onMounted } from "vue";
+import { WeatherData } from "./types/weather.types";
+
+const { weather, setWeather, setIsError, setIsLoading } = useWeatherStore();
+const BASE_URL = "https://api.weatherapi.com/v1";
+
+onMounted(() => {
+  setIsLoading(true);
+  setIsError(false);
+  // get the geolocation of the user
+  getCurrentLocation().then((position) => {
+    const { lon, lat } = position;
+    console.log(lon, lat);
+    Promise.all([
+      axios.get<WeatherData>(
+        `${BASE_URL}/current.json?key=${
+          import.meta.env.VITE_WEATHER_API_KEY
+        }&q=${lat},${lon}`
+      ),
+      axios.get(
+        `${BASE_URL}/forecast.json?key=${
+          import.meta.env.VITE_WEATHER_API_KEY
+        }&q=${lat},${lon}&days=1`
+      ),
+    ])
+      .then(([{ data: weather }, { data: hourly }]) => {
+        console.log({ weather, hourly });
+        setWeather(weather);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setIsError(true);
+        setIsLoading(false);
+        console.log(error.response.data.message);
+      });
+  });
+});
 </script>
 
 <template>
   <div class="container">
-    <WeatherWidget />
+    <div class="" v-if="weather.isLoading">Loading . . .</div>
+    <div class="" v-else-if="weather.isError">Error fetching data</div>
+    <WeatherWidget v-else />
   </div>
 </template>
 
